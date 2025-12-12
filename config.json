@@ -1,0 +1,12 @@
+{
+  "time_format": 24,
+  "wait_scr_chg": 6,
+  "wait_meta": 10,
+  "wait_price": 60,
+  "block_splash": 1,
+  "wait_config": 3,
+  "timezone": "auto",
+  "api_failures": 20,
+  "vers_loc": "current"
+}
+
