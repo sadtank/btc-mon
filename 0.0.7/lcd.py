@@ -233,7 +233,7 @@ def main():
     lcd.output(1,line0, line1)
     
     #lcd.input
-    user_input = lcd.input("Enter name:")
+    user_input = lcd.input("Enter string:")
     lcd.output(1,"You typed:", user_input)
     
     # If you want to clear & release:

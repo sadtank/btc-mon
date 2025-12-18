@@ -41,10 +41,3 @@ class BlockMetadata:
             print(f"Error fetching block metadata: {e}")
             self.new_block = False
         return self
-
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()

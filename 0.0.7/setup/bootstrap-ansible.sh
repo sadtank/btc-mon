@@ -29,4 +29,3 @@ echo "Running Ansible playbook..."
 ansible-playbook "$SCRIPT_DIR/playbook.yml" -vv || { echo "Ansible playbook failed"; exit 1; }
 
 echo "Script completed successfully."
-

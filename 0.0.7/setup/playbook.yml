@@ -114,8 +114,8 @@
         state: present
 
     # ---------------- WiFi & Autologin ----------------
-    - name: Set WiFi country
-      command: raspi-config nonint do_wifi_country "US"
+    #- name: Set WiFi country
+    #  command: raspi-config nonint do_wifi_country "US"
 
     #- name: Set autologin
     #  command: raspi-config nonint do_boot_behaviour "B2"
@@ -365,7 +365,7 @@
         msg: |
           Setup is complete!
 
-          To apply all changes (bootloader/EEPROM updates, splash screen, autologin, i2c group membership), 
+          To apply all changes (e.g., bootloader/EEPROM updates, splash screen, i2c group membership), 
           please reboot your Raspberry Pi manually:
 
               sudo reboot

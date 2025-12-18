@@ -43,11 +43,3 @@ class PriceFetcher:
             self.price = vwap
         except KeyError:
             print("Error parsing Kraken API response")
-
-
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()

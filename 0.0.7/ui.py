@@ -601,11 +601,6 @@ def second_boot_handler(lcd, config):
     
             
             
-def main():
-    pass
-
-
-
 if __name__ == "__main__":
     block_now = block.BlockMetadata()
     fees_now = fees.FeeStats()

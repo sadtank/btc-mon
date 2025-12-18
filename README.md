@@ -42,7 +42,7 @@ While this setup is for raspi, the display manufacturer ([Waveshare](https://www
 
 
 ## Pre-built setup
-**I got this.** Happpy to help.
+**I got this.** Happy to help.
 
 1. Contact me @sadtank:matrix.org. (Allow a few days for my initial response).
 2. I answer questions.
@@ -66,7 +66,7 @@ Pre-built benefits:
   * Updates disabled (prioritizes stability)
 
 
-# Parts list
+## Parts list
 Easy mode: buy a [raspi kit](https://www.amazon.com/s?k=canakit) and a [Waveshare LCD](https://www.amazon.com/dp/B0DY7QTDXG). 
 
 At a minimum you need:
@@ -81,7 +81,18 @@ At a minimum you need:
 * Micro USB cable
 
 
-# Troubleshooting tips
+## Config
+  `time_format`: str display clock in `24` or `12` hour increments. Note, there is no AM/PM indicator. (If unsure touch grass.)
+  `wait_scr_chg`: int seconds before switching screens, default `6`.
+  `wait_meta`: int seconds before checking [mempool.space](https://mempool.space/api/blocks/tip/hash), default `10`. (see api rate limits before reducing.)
+  `wait_price`: int seconds before checking [api.kraken](https://api.kraken.com/0/public/Ticker?pair=XBTUSD), default `60`. (see api rate limits before reducing.)
+  `block_splash`: int as bool to show silent alert when new block detected. `1` or `0`, default `1`.
+  `wait_config`: int seconds for interactive mode window on script start, default `3`.
+  `timezone`: str Default `auto` will detect from [ip-api.com](http://ip-api.com/json). (see api rate limits before reducing). To statically assign, set to one of the string outputs of `timedatectl list-timezones`.
+  `api_failures`: int to restart service after N consecutive api failures, default `20`.
+
+
+## Troubleshooting tips
 * AI is your friend.
 * Need more support? Send it to me for _pre-built setup_.
 * _Should I update btc-mon from the interactive LCD menu?_ - Update will clobber everything in the folder with the current repo. You can rollback by pointing the symlink (`current`) at whichever version of main.py you want to run.
@@ -95,7 +106,7 @@ At a minimum you need:
   * You can't enter interactive mode via SSH. Why? Headless always has tty1 receiving input from keyboard. This means configuring keystrokes from hitting tty1 (and possibly running commands without knowing). To shield tty1 from keyboard input the script switches to non-interactive tty when expecting any key for setup. This was a design trade-off, optimizing for the ability to configure with just usb keyboard and LCD, rather than ssh.
 
 
-# Donations
+## Donations
 bc1q0kztxyxlwr4aauhe3qhvwqsyy2aumxrk3mtqu0
 
 <img width="166" height="165" alt="btc-wallet-qr" src="https://github.com/user-attachments/assets/01f79bfd-cc62-4e2d-920b-5310d661d14b" />

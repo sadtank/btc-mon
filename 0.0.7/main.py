@@ -26,20 +26,14 @@ def main():
     lcd = LCD()
     config = commands.load_config(CONFIG_FILE)
     
-    #ui.keyborad_layout_handler(lcd)
-    
+    #boot splash and header
     lcd.center(2, "stay humble", "stack sats")
     lcd.splash0 = "BTC  MON"
     lcd.line1 = ""
     lcd.center(0, lcd.splash0, lcd.line1)
     
-    #ui.first_boot_handler(lcd, config)
-    #ui.second_boot_handler(lcd, config)
-    
-    
-    
+    #switch to non-interactive tty to shield tty0 from input, and listen for keypress
     ui.check_interactive(lcd, config, SCRIPT_ROOT)
-    
 
     lcd.center(0, lcd.splash0, "getting ip")
     if not commands.get_ip_address():
@@ -66,7 +60,8 @@ def main():
     lcd.center(0, lcd.splash0, "getting price")
     price_now.update()
 
-
+    
+    #set vars for infinite loop
     epoch_now = int(time.time())
     epoch_flip = int(time.time())
     last_meta_epoch = epoch_now
@@ -75,7 +70,8 @@ def main():
     apiWasCalled = 0
     while True:
         epoch_now = int(time.time())
-
+        
+        #mempool.space refresh
         if epoch_now - last_meta_epoch >= config.wait_meta:
             block_now.update()
             fees_now.update()
@@ -85,12 +81,13 @@ def main():
                 lcd.output(2, "+--NEW  BLOCK--+", "|______________|")
                 block_now.new_block = False
         
+        #kraken price refresh
         if epoch_now - last_price_epoch >= config.wait_price:
             price_now.update()
             last_price_epoch = epoch_now
             apiWasCalled = 1
         
-        #if time to flipp
+        #cycle screens (structure makes it easier to add more screens to rotation)
         if epoch_now >= epoch_flip:
             use_Screen = (use_Screen + 1) %2 #where %n is the number of screens
             epoch_flip = int(time.time()) + config.wait_scr_chg 
@@ -103,7 +100,8 @@ def main():
             case _:
                 lcd.center(0, "screen case err", "exiting")
                 raise RuntimeError("screen case err")
-            
+        
+        #if api was called, sum failure counts on objects
         if apiWasCalled:
             #print (f"{block_now.request_error_count}, {fees_now.request_error_count}, {price_now.request_error_count}")
             failures = sum([block_now.request_error_count, fees_now.request_error_count, price_now.request_error_count])
@@ -111,19 +109,10 @@ def main():
                 lcd.center(2, f"API failures: {failures}", "exiting")
                 raise RuntimeError(f"too many API failures: {failures}")
         apiWasCalled = 0
-        #check decimal on price
         
+        #this balances screen refresh with updating data within the wait_scr_chg.
         time.sleep(1)
-        #time.sleep(config.wait_scr_chg)
-    
-    
-    # echo()
-    #ui.first_boot()
-    #ui.second_boot()
-    #ui.main_splash()
-    
-    
-    
+   
     lcd.clear()
     lcd.close()
 
