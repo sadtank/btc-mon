@@ -14,37 +14,12 @@ Sure, the [Blockclock](https://store.coinkite.com/store/blockclock) is sleek... 
 * Screen 2: Sat/vB mempool rates (high, medium, low priority)
 * New block alert splash
 
-
-## Self install
-**You got this.**
-
-Single-use raspi:
-1. Image using official raspberry pi imager.
-   * Trixie headless 64 and 32 both work fine.
-   * Recommend setting wifi and user `btcmon`.
-   * Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.
-3. Use `sudo raspi-config` to set wifi country code, keyboard layout, and wifi.
-4. Install git with `sudo apt-get update && sudo apt-get install git -y`
-5. Use `git clone --depth 1 https://github.com/sadtank/btc-mon.git`
-6. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.1.0/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
-   * _You are responsible for knowing what these scripts will do on your system._
-7. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
-8. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
-9. (optional) [send sats](#donations) for thanks!
-
-Multi-use raspi:
-If you're running other stuff on the pi already, the ansible bootstrap script may bork your existing install.
-1. Eyeball the ansible playbook for dependencies and necessary config (e.g., I2C... AI is good at this.).
-2. Modify and enable the unif file from the ansible playbook. Unit file executes the location of the `current` version symlink.
-3. (optional) [send sats](#donations) for thanks!
-
-While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. If all Waveshare scripts expose the same calls simply swap `LCD1602.py`. This _should_ work, if the device is configured properly. Your mileage may vary.
-
+DIY or pre-built options below.
 
 ## Pre-built setup
-**I got this.** Happy to help.
+**I got this.**
 
-1. Contact me @sadtank:matrix.org. (Allow a few days for my initial response).
+1. Happy to help. contact me @sadtank:matrix.org. (Allow a few days for my initial response).
 2. I answer questions.
 3. You buy hardware and ship SD card to me. (recommend sending all hardware for full testing/troubleshooting.)
 4. You pay return shipping and send me the info/label.
@@ -66,6 +41,32 @@ Pre-built benefits:
   * Updates disabled (prioritizes stability)
 
 
+## Self install
+**You got this.**
+
+Single-use raspi:
+1. Image using official raspberry [pi imager](https://www.raspberrypi.com/software/).
+   * Recommend setting wifi and user `btcmon`.
+   * Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.
+3. Connect the SD and peripherals, using [Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module) pinout (or look at image above).
+4. Boot and `sudo raspi-config` to set keyboard layout, wifi country code, and wifi.
+5. Install git with `sudo apt-get update && sudo apt-get install git -y` (No upgrade? That's right. More stable.)
+6. Use `git clone --depth 1 https://github.com/sadtank/btc-mon.git`
+7. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.1.0/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
+   * _You are responsible for knowing what these scripts will do on your system._
+8. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
+9. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply connect a keyboard, boot, and configure using only the LCD display!
+10. (optional) [send sats](#donations) for thanks!
+
+Multi-use raspi:
+If you're running other stuff on the pi already, the ansible bootstrap script may bork your existing install.
+1. Eyeball the ansible playbook for dependencies and necessary config (e.g., I2C... AI is good at this.).
+2. Modify and enable the unif file from the ansible playbook. Unit file executes the location of the `current` version symlink.
+3. (optional) [send sats](#donations) for thanks!
+
+While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. If all Waveshare scripts expose the same calls simply swap `LCD1602.py`. This _should_ work, if the device is configured properly. Your mileage may vary.
+
+
 ## Parts list
 Easy mode: buy a [raspi kit](https://amzn.to/4s3M5dz) and a [Waveshare LCD](https://amzn.to/3XYQX61). 
 
@@ -79,7 +80,11 @@ At a minimum you need:
 * [Quality SD card](https://amzn.to/3XYRzsl) (8gb+ if headless, 16gb+ if desktop, _reputable brands only_)
 * [Stable 5V 3A power supply](https://amzn.to/4p45qsn)
 * [Micro USB cable](https://amzn.to/4s690oC), consider how long you want the cable to be.
-* Consider crafting a [case](https://www.thingiverse.com/thing:5952644) 
+* Wall mount:
+  * [Finish nails](https://amzn.to/3MHO7jo) through the mount holes
+  * [3M Command Stripps](https://amzn.to/3MHOLgO) cut to size (keep the tab). (no residue, usually doesn't damage surfaces)
+  * [3M Duel Lock](https://amzn.to/4apJfsW) to mount and adjust after (no residue left but may damage wall surfaces)
+* Consider crafting a [case](https://www.thingiverse.com/thing:5952644)
 
 
 ## Config
@@ -103,6 +108,10 @@ At a minimum you need:
   * It's likely you have a cheap/bad card. Some cards pass checks but still fail. Try again using a known good card. Never had a problem with [these SD cards](https://amzn.to/3XYRzsl).
   * Try without updating eprom...
   * Try on a different version of pi os.
+* _Other OS issues (e.g., getting on wifi)_
+  * Try using pi imager v1.8.5 and trixie 64 bit headless.
+  * In custom image settings show password, and verify.
+  * Raspi may need a 2.4 network, check the docs, ensure you're broadcasting wap on 2.4.
 * _Can't enter interactive mode to setup_
   * You can't enter interactive mode via SSH. This is because tty1 always receives input from connected keyboards, even without a monitor. To shield tty1 from keyboard input (which could execute commands) the script switches to a non-interactive tty when expecting any key for setup. This is a design trade-off, optimizing for the ability to configure with just usb keyboard and LCD, rather than requiring ssh or a monitor.
 
