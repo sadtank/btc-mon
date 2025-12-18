@@ -44,7 +44,7 @@ Pre-built benefits:
 ## Self install
 **You got this.**
 
-Single-use raspi:
+### Single-use raspi:
 1. Image using official raspberry [pi imager](https://www.raspberrypi.com/software/).
    * Recommend setting wifi and user `btcmon`.
    * Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.
@@ -58,7 +58,7 @@ Single-use raspi:
 9. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply connect a keyboard, boot, and configure using only the LCD display!
 10. (optional) [send sats](#donations) for thanks!
 
-Multi-use raspi:
+### Multi-use raspi:
 If you're running other stuff on the pi already, the ansible bootstrap script may bork your existing install.
 1. Eyeball the ansible playbook for dependencies and necessary config (e.g., I2C... AI is good at this.).
 2. Modify and enable the unif file from the ansible playbook. Unit file executes the location of the `current` version symlink.
