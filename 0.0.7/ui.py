@@ -87,6 +87,13 @@ def update_helper(lcd, SCRIPT_ROOT):
 
     response = ask(lcd, question, expected_answer, default)
     if response.lower() in answer_check:
+    
+        # if success ask if want to throw error, to restart service without creds
+        # Include UI to set specific version, that runs (also no creds needed)
+        #   ln -sfn 0.0.7/main.py current
+        #   issues if owned by sadtank? maybe chown?
+        # Set systemctl if error, rollback to previous version.
+    
         lcd.output(0, step, "updating...")
         success, status = commands.update_btcmon(SCRIPT_ROOT)
         lcd.output(2, step, status)
@@ -94,6 +101,7 @@ def update_helper(lcd, SCRIPT_ROOT):
             lcd.output(2, step, "(!) exiting")
             raise Exception("issue with update.")
         return 
+    
 
 
 def interactive(lcd, config, SCRIPT_ROOT):

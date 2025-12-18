@@ -215,7 +215,6 @@ class Config:
     wait_config: int
     timezone: str
     api_failures: int
-    vers_loc: str
     
 def create_default_config(path: str):
     default_config = {
@@ -226,8 +225,7 @@ def create_default_config(path: str):
         "block_splash": 1,
         "wait_config": 3,
         "timezone": "auto",
-        "api_failures": 20,
-        "vers_loc": "current"
+        "api_failures": 20
     }
     with open(path, "w") as f:
         json.dump(default_config, f, indent=4)
@@ -276,29 +274,33 @@ def try_all_networks():
         
         
 def update_btcmon(SCRIPT_ROOT):
+    """
+    Pull down the public repo, overwriting all existing files.
+    """
     repo_path = SCRIPT_ROOT.parent
-    repo_url = "https://github.com/user/btc-mon"
+    repo_url = "https://github.com/sadtank/btc-mon.git"  # public HTTPS URL
+
     commands = [
         ["git", "init"],
         ["git", "remote", "remove", "origin"],
         ["git", "remote", "add", "origin", repo_url],
         ["git", "fetch", "origin"],
-        ["git", "reset", "--hard", f"origin/{branch}"],
+        ["git", "reset", "--hard", f"origin/master"],
         ["git", "clean", "-fdx"]
     ]
+    
     for cmd in commands:
-        # ignore errors for removing origin if it doesn't exist
         try:
-            print(f"Running: {' '.join(cmd)}")
             subprocess.run(cmd, cwd=repo_path, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         except subprocess.CalledProcessError as e:
+            # ignore errors from removing origin if it doesn't exist
             if "remove" in cmd and "origin" in cmd:
-                # safe to ignore
                 continue
-            status = "update failed"
-            return False, status
+            raise RuntimeError(
+                f"Git command failed: {' '.join(cmd)}\n{e.stderr.decode()}"
+            )
 
-    status = "update success"
+    status = "success"
     return True, status
 
 
