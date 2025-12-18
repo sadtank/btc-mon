@@ -67,18 +67,19 @@ Pre-built benefits:
 
 
 ## Parts list
-Easy mode: buy a [raspi kit](https://www.amazon.com/s?k=canakit) and a [Waveshare LCD](https://www.amazon.com/dp/B0DY7QTDXG). 
+Easy mode: buy a [raspi kit](https://amzn.to/4s3M5dz) and a [Waveshare LCD](https://amzn.to/3XYQX61). 
 
 At a minimum you need:
-* Waveshare LCD1602
-* PH2.O 4PIN wire (connects LCD to pi, typically included with LCD purchase)
-* Raspi SBC:
+* [Waveshare LCD1602](https://amzn.to/495ZeKB)
+** PH2.O 4PIN wire (connects LCD to pi, typically included with LCD)
+* Raspi SBC [zero 2 WH](https://amzn.to/3L5Pgke) or even a [zero (1) WH](https://amzn.to/48LBPz5) will work fine:
   * capable of running Raspberry Pi OS
   * with onboard wifi
-  * pre-soldered GPIO pins (preferred)
-* Quality SD card (5GB or more, _reputable brands only_)
-* _Stable_ 5V 3A power supply
-* Micro USB cable
+  * the "h" stands for pre-soldered header (e.g., Pi Zero 2 WH)
+* [Quality SD card](https://amzn.to/3XYRzsl) (8gb+ if headless, 16gb+ if desktop, _reputable brands only_)
+* [Stable 5V 3A power supply](https://amzn.to/4p45qsn)
+* [Micro USB cable](https://amzn.to/4s690oC), consider how long you want the cable to be.
+* Consider crafting a [case](https://www.thingiverse.com/thing:5952644) 
 
 
 ## Config
@@ -88,7 +89,7 @@ At a minimum you need:
 *  `wait_price`: int seconds before checking [api.kraken](https://api.kraken.com/0/public/Ticker?pair=XBTUSD), default `60`. (see api rate limits before reducing.)
 *  `block_splash`: int as bool to show silent alert when new block detected. `1` or `0`, default `1`.
 *  `wait_config`: int seconds for interactive mode window on script start, default `3`.
-*  `timezone`: str Default `auto` will detect from [ip-api.com](http://ip-api.com/json). (see api rate limits before reducing). To statically assign, set to one of the string outputs of `timedatectl list-timezones`.
+*  `timezone`: str `auto` will detect from [ip-api.com](http://ip-api.com/json). (see api rate limits before reducing). To statically assign, enter a string from `timedatectl list-timezones`.
 *  `api_failures`: int to restart service after N consecutive api failures, default `20`.
 
 
@@ -99,7 +100,7 @@ At a minimum you need:
 * _Ansible ran without errors but btc-mon isn't running on the screen_
   * Likely some issue with the unit file or systemctl... Did you use the suggested user (`btcmon`)? Did you change/modify the symlink to the current version? You'll need to dig through the logs to figure it out. Check the btcmon.service status and journalctl. 
 * _Clean image buggered after 1-3 boots_
-  * It's likely you have a cheap/bad card. Some cards pass checks but still fail. Try again using a known good card. Never had a problem with [these SD cards](https://www.amazon.com/dp/B073K14CVB).
+  * It's likely you have a cheap/bad card. Some cards pass checks but still fail. Try again using a known good card. Never had a problem with [these SD cards](https://amzn.to/3XYRzsl).
   * Try without updating eprom...
   * Try on a different version of pi os.
 * _Can't enter interactive mode to setup_
