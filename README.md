@@ -18,7 +18,7 @@ Sure, the [Blockclock](https://store.coinkite.com/store/blockclock) is sleek... 
 ## Self install
 **You got this.**
 
-Single use raspi:
+Single-use raspi:
 1. Image using official raspberry pi imager.
    * Trixie headless 64 and 32 both work fine.
    * Recommend setting wifi and user `btcmon`.
@@ -32,7 +32,7 @@ Single use raspi:
 8. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
 9. (optional) [send sats](#donations) for thanks!
 
-Within existing instillations:
+Multi-use raspi:
 If you're running other stuff on the pi already, the ansible bootstrap script may bork your existing install.
 1. Eyeball the ansible playbook for dependencies and necessary config (e.g., I2C... AI is good at this.).
 2. Modify and enable the unif file from the ansible playbook. Unit file executes the location of the `current` version symlink.
