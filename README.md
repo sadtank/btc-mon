@@ -18,8 +18,7 @@ Sure, the [Blockclock](https://store.coinkite.com/store/blockclock) is sleek... 
 ## Self install
 **You got this.**
 
-While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. While untested, the appropriate `LCD1602.py` _should_ simply drop in and work with btc-mon `main.py`, provided the device is configured properly.
-
+For Raspi
 1. Image using official raspberry pi imager.
    * Trixie headless 64 and 32 both work fine.
    * Recommend setting wifi and user `btcmon`.
@@ -32,6 +31,9 @@ While this setup is for raspi, the display manufacturer ([Waveshare](https://www
 7. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
 8. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
 9. (optional) [send sats](#donations) for thanks!
+
+Arduino and Jetson Nano:
+While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. Your mileage may vary, but in theory the appropriate `LCD1602.py` _should_ simply drop in and work with btc-mon `main.py`, provided the device is configured properly.
 
 
 ## Pre-built setup
