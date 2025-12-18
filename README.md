@@ -1,7 +1,7 @@
 # BTC-Monitor
 A Bitcoin clock and price monitor script.
 
-Isn't this just a [blockclock](https://store.coinkite.com/store/blockclock)? Nope. This is FOSS. 
+Isn't this just a [blockclock](https://store.coinkite.com/store/blockclock)? Nope. This is FOSS.
 
 Here's the features:
 * Works with all raspberry pi SBCs with wifi
@@ -11,45 +11,54 @@ Here's the features:
 * Screen 2: Block height and age in minutes
 * Screen 2: Sat/vB rates
 * New block alert splash
-* Built in error detection and troubleshooting
 
 
 ## Want a pre-built setup?
 
-I'll configure one for you.
+I'll configure one for you. Donation is optional. BTC preferred.
 
 1. Contact me @sadtank:matrix.org. (Allow a few days for my initial response).
-2. You buy the Raspberry Pi, Waveshare LCD, and SD card yourself.
-3. Ship them to me.
+2. I can recommend hardware, you buy.
+3. Ship them to me. (SD card at minimum, recommend sending all hardware.)
 4. I configure, test, and send back.
-5. You pay shipping and send me label images; donation is optional.
+5. You pay return shipping and send me labels.
 
-I cannot guarantee hardware, software, or support. But I do try to help whenever I can.
+I cannot guarantee hardware, software, or support. But I try to help whenever I can.
 
 Pre-built benefits:
-* With just a usb keyboard, you can easily put it on your wifi (and setup SSH).
-* Just works. Avoid installation, os and hardware config headaches.
+* With just a usb keyboard, you can easily put it on your wifi (and setup SSH). This makes it giftable.
+* Just works.
   * Avoid installation, os and hardware config headaches.
   * Official and verified raspberry pi OS
   * Runs on boot, retries on error
-  * Automatic BTC-MON updates
   * OS optimized to minimize SD card writes (extends SD life)
   * Firewall configured
   * Removed unnecessary services
   * Telemetry disabled
-* I configure for dedicated use, but you can overlay other stuff later.
+  * I configure for dedicated use, but you can overlay other stuff later.
 
 
 ## Self install
 It's all you.
 
-# Waveshare LCD1602
 
-This project is designed for use with the Waveshare LCD1602 I2C display.
+# Minimum Parts
+Easy mode: buy a [raspi kit](https://www.amazon.com/s?k=canakit) and a [Waveshare LCD](https://www.amazon.com/dp/B0DY7QTDXG). 
 
-**Important:** This repository does **not** include the Waveshare LCD driver. Waveshare may reserve all rights to their software, even though their drivers are freely and publicly available with no posted license (at this time).
+At a minimum you need:
+* Waveshare LCD1602
+* PH2.O 4PIN wire (connects LCD to pi, typically included with LCD purchase)
+* Raspi SBC:
+  * capable of running Raspberry Pi OS
+  * with onboard wifi
+  * pre-soldered GPIO pins (preferred)
+* Quality SD card (5GB or more, _reputable brands only_)
+* _Stable_ 5V 3A power supply
+* Micro USB cable
+* USB keyboard for setup (possibly a converter)
 
-If self-installing, purchase the display and download the official `LCD1602.py` driver script from Waveshare. Place this script in same folder as `main.py`, ensuring it has execute permissions.
 
-Official driver link:
-https://www.waveshare.com/wiki/LCD1602_I2C_Module
+# Donations
+bc1q0kztxyxlwr4aauhe3qhvwqsyy2aumxrk3mtqu0
+
+

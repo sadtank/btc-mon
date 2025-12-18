@@ -6,7 +6,6 @@
   "block_splash": 1,
   "wait_config": 3,
   "timezone": "auto",
-  "api_failures": 20,
-  "vers_loc": "current"
+  "api_failures": 20
 }
 
