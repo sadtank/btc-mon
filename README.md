@@ -61,7 +61,7 @@ Pre-built benefits:
   * Updates disabled (prioritizes stability)
 
 
-# Minimum Parts
+# Parts list
 Easy mode: buy a [raspi kit](https://www.amazon.com/s?k=canakit) and a [Waveshare LCD](https://www.amazon.com/dp/B0DY7QTDXG). 
 
 At a minimum you need:
