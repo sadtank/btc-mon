@@ -82,14 +82,14 @@ At a minimum you need:
 
 
 ## Config
-  `time_format`: str display clock in `24` or `12` hour increments. Note, there is no AM/PM indicator. (If unsure touch grass.)
-  `wait_scr_chg`: int seconds before switching screens, default `6`.
-  `wait_meta`: int seconds before checking [mempool.space](https://mempool.space/api/blocks/tip/hash), default `10`. (see api rate limits before reducing.)
-  `wait_price`: int seconds before checking [api.kraken](https://api.kraken.com/0/public/Ticker?pair=XBTUSD), default `60`. (see api rate limits before reducing.)
-  `block_splash`: int as bool to show silent alert when new block detected. `1` or `0`, default `1`.
-  `wait_config`: int seconds for interactive mode window on script start, default `3`.
-  `timezone`: str Default `auto` will detect from [ip-api.com](http://ip-api.com/json). (see api rate limits before reducing). To statically assign, set to one of the string outputs of `timedatectl list-timezones`.
-  `api_failures`: int to restart service after N consecutive api failures, default `20`.
+*  `time_format`: str display clock in `24` or `12` hour increments. Note, there is no AM/PM indicator. (If unsure touch grass.)
+*  `wait_scr_chg`: int seconds before switching screens, default `6`.
+*  `wait_meta`: int seconds before checking [mempool.space](https://mempool.space/api/blocks/tip/hash), default `10`. (see api rate limits before reducing.)
+*  `wait_price`: int seconds before checking [api.kraken](https://api.kraken.com/0/public/Ticker?pair=XBTUSD), default `60`. (see api rate limits before reducing.)
+*  `block_splash`: int as bool to show silent alert when new block detected. `1` or `0`, default `1`.
+*  `wait_config`: int seconds for interactive mode window on script start, default `3`.
+*  `timezone`: str Default `auto` will detect from [ip-api.com](http://ip-api.com/json). (see api rate limits before reducing). To statically assign, set to one of the string outputs of `timedatectl list-timezones`.
+*  `api_failures`: int to restart service after N consecutive api failures, default `20`.
 
 
 ## Troubleshooting tips
