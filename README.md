@@ -71,6 +71,8 @@ At a minimum you need:
 
 
 # Troubleshooting tips
+* AI is your friend.
+* Need more support? Send it to me for _pre-built setup_.
 * _Should I update btc-mon from the interactive LCD menu?_ - Update will clobber everything in the folder with the current repo. You can rollback by pointing the symlink ("current") at whichever version of main.py you want to run.
 * _Ansible ran without errors but btc-mon isn't running on the screen_
   * Likely some issue with the unit file or systemctl... Did you use the suggested user (btcmon)? Did you change/modify the symlink to the current version? You'll need to dig through the logs to figure it out. Check the btcmon.service status and journalctl. 
@@ -80,8 +82,6 @@ At a minimum you need:
   * Try on a different version of pi os.
 * _Can't enter interactive mode to setup_
   * You can't enter interactive mode via SSH. Why? Headless always has tty1 receiving input from keyboard. This means configuring keystrokes from hitting tty1 (and possibly running commands without knowing). To shield tty1 from keyboard input the script switches to non-interactive tty when expecting any key for setup. This was a design trade-off, optimizing for the ability to configure with just usb keyboard and LCD, rather than ssh.
-* AI is your friend.
-* Need more support? Send it to me for _pre-built setup_.
 
 
 # Donations
