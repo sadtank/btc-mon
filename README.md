@@ -1,13 +1,13 @@
 # BTC-Monitor
 A Bitcoin clock and price monitor script.
 
-[Blockclock](https://store.coinkite.com/store/blockclock) is pretty cool... But if you want something FOSS that you can afford... something that actually shows a BTC-USD conversion... something more cyberpunk... something that you can customize... btc-mon is for you.
+Sure, the [Blockclock](https://store.coinkite.com/store/blockclock) is sleek... But if you want FOSS you can afford... Something customizable and a bit cyberpunk... then btc-mon is for you.
 
-<img width="460" height="380" alt="btcmon1" src="https://github.com/user-attachments/assets/4121025c-9da5-4195-bef0-c20a9c783d44" />
-<img caption="test" width="460" height="380" alt="btcmon2" src="https://github.com/user-attachments/assets/5c666da6-5f46-44c3-8bc1-b8df9b6145f2" />
+<img width="345" alt="btcmon1" src="https://github.com/user-attachments/assets/4121025c-9da5-4195-bef0-c20a9c783d44" />
+<img width="345" height="380" alt="btcmon2" src="https://github.com/user-attachments/assets/5c666da6-5f46-44c3-8bc1-b8df9b6145f2" />
 
 ## Features:
-* Works with all raspberry pi SBCs with wifi
+* Works with all raspberry pi SBCs with built-in wifi
 * Screen 1: 12 or 24 hr time and date
 * Screen 1: Price in USD (kraken) and trend (^/v) compared to 24hr Volume-Weighted Average Price (VWAP)
 * Screen 2: Block height and age in minutes
@@ -18,16 +18,20 @@ A Bitcoin clock and price monitor script.
 ## Self install
 **You got this.**
 
+While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. While untested, the appropriate `LCD1602.py` _should_ simply drop in and work with btc-mon `main.py`, provided the device is configured properly.
 
-1. Image using official raspberry pi imager. Recommend setting wifi and user `btcmon`. Trixie headless 64 and 32 should work fine. (Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.)
-2. Use `sudo raspi-config` to set wifi country code, keyboard layout, and wifi.
-3. Install git with `sudo apt-get update && sudo apt-get install git -y`
-4. Use `git clone --depth 1 https://github.com/sadtank/btc-mon.git`
-5. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.0.7/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
+1. Image using official raspberry pi imager.
+   * Trixie headless 64 and 32 both work fine.
+   * Recommend setting wifi and user `btcmon`.
+   * Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.
+3. Use `sudo raspi-config` to set wifi country code, keyboard layout, and wifi.
+4. Install git with `sudo apt-get update && sudo apt-get install git -y`
+5. Use `git clone --depth 1 https://github.com/sadtank/btc-mon.git`
+6. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.0.7/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
    * _You are responsible for knowing what these scripts will do on your system._
-6. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
-7. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
-8. (optional) [send sats](#donations) for thanks!
+7. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
+8. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
+9. (optional) [send sats](#donations) for thanks!
 
 
 ## Pre-built setup
@@ -73,9 +77,9 @@ At a minimum you need:
 # Troubleshooting tips
 * AI is your friend.
 * Need more support? Send it to me for _pre-built setup_.
-* _Should I update btc-mon from the interactive LCD menu?_ - Update will clobber everything in the folder with the current repo. You can rollback by pointing the symlink ("current") at whichever version of main.py you want to run.
+* _Should I update btc-mon from the interactive LCD menu?_ - Update will clobber everything in the folder with the current repo. You can rollback by pointing the symlink (`current`) at whichever version of main.py you want to run.
 * _Ansible ran without errors but btc-mon isn't running on the screen_
-  * Likely some issue with the unit file or systemctl... Did you use the suggested user (btcmon)? Did you change/modify the symlink to the current version? You'll need to dig through the logs to figure it out. Check the btcmon.service status and journalctl. 
+  * Likely some issue with the unit file or systemctl... Did you use the suggested user (`btcmon`)? Did you change/modify the symlink to the current version? You'll need to dig through the logs to figure it out. Check the btcmon.service status and journalctl. 
 * _Clean image buggered after 1-3 boots_
   * It's likely you have a cheap/bad card. Some cards pass checks but still fail. Try again using a known good card. Never had a problem with [these SD cards](https://www.amazon.com/dp/B073K14CVB).
   * Try without updating eprom...
