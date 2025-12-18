@@ -1,7 +1,7 @@
 # BTC-Monitor
 A Bitcoin clock and price monitor script.
 
-Isn't this just a [blockclock](https://store.coinkite.com/store/blockclock)? Nope. This is FOSS.
+[Blockclock](https://store.coinkite.com/store/blockclock) is pretty cool... But if you want something FOSS you can afford, btc-mon is for you.
 
 Here's the features:
 * Works with all raspberry pi SBCs with wifi
@@ -13,9 +13,12 @@ Here's the features:
 * New block alert splash
 
 
-## Want a pre-built setup?
+## Self install
+It's all you.
 
-I'll configure one for you. Donation is optional. BTC preferred.
+
+## Pre-built setup
+I'm happy to configure one for you. Donation is optional (below).
 
 1. Contact me @sadtank:matrix.org. (Allow a few days for my initial response).
 2. I can recommend hardware, you buy.
@@ -38,10 +41,6 @@ Pre-built benefits:
   * I configure for dedicated use, but you can overlay other stuff later.
 
 
-## Self install
-It's all you.
-
-
 # Minimum Parts
 Easy mode: buy a [raspi kit](https://www.amazon.com/s?k=canakit) and a [Waveshare LCD](https://www.amazon.com/dp/B0DY7QTDXG). 
 
@@ -55,10 +54,9 @@ At a minimum you need:
 * Quality SD card (5GB or more, _reputable brands only_)
 * _Stable_ 5V 3A power supply
 * Micro USB cable
-* USB keyboard for setup (possibly a converter)
 
 
 # Donations
 bc1q0kztxyxlwr4aauhe3qhvwqsyy2aumxrk3mtqu0
 
-
+<img width="166" height="165" alt="btc-wallet-qr" src="https://github.com/user-attachments/assets/01f79bfd-cc62-4e2d-920b-5310d661d14b" />
