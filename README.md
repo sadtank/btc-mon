@@ -103,7 +103,7 @@ At a minimum you need:
   * Try without updating eprom...
   * Try on a different version of pi os.
 * _Can't enter interactive mode to setup_
-  * You can't enter interactive mode via SSH. Why? Headless always has tty1 receiving input from keyboard. This means configuring keystrokes from hitting tty1 (and possibly running commands without knowing). To shield tty1 from keyboard input the script switches to non-interactive tty when expecting any key for setup. This was a design trade-off, optimizing for the ability to configure with just usb keyboard and LCD, rather than ssh.
+  * You can't enter interactive mode via SSH. This is because tty1 always receives input from connected keyboards, even without a monitor. To shield tty1 from keyboard input (which could execute commands) the script switches to a non-interactive tty when expecting any key for setup. This is a design trade-off, optimizing for the ability to configure with just usb keyboard and LCD, rather than requiring ssh or a monitor.
 
 
 ## Donations
