@@ -1,7 +1,7 @@
 # BTC-Monitor
 A Bitcoin clock and price monitor script.
 
-[Blockclock](https://store.coinkite.com/store/blockclock) is pretty cool... But if you want something FOSS you can afford, btc-mon is for you.
+[Blockclock](https://store.coinkite.com/store/blockclock) is pretty cool... But if you want something FOSS that you can afford... something that actually shows a BTC-USD conversion... something more cyberpunk... something that you can customize... btc-mon is for you.
 
 Here's the features:
 * Works with all raspberry pi SBCs with wifi
@@ -14,31 +14,50 @@ Here's the features:
 
 
 ## Self install
-It's all you.
+You got this.
+
+1. Image using official raspberry pi imager. Recommend setting wifi and user `btcmon`. Trixie headless 64 and 32 should work fine. (Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.)
+2. Use `sudo raspi-config` to set wifi country code, keyboard layout, and wifi.
+3. Install git with `sudo apt-get update && sudo apt-get install git -y`
+4. Use `git clone --depth 1 https://github.com/sadtank/btc-mon.git`
+5. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.0.7/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
+   * installs ansible
+   * runs ansible playbook
+   * installs/disables utilities/packages/services
+   * adds specific commands to sudoers for the target user (necessary for keyboard setup via LCD)
+   * detect and configure timezone
+   * enable I2C
+   * configures firewall
+   * configures unit file for main btc-mon script
+   * _You are responsible for knowing what these scripts will do on your system._
+ 6. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
+ 7. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
+ 8. (optional) [send sats](#donations) for thanks!
 
 
 ## Pre-built setup
-I'm happy to configure one for you. Donation is optional (below).
+**I got this.** Happy to help. Donation optional (below).
 
 1. Contact me @sadtank:matrix.org. (Allow a few days for my initial response).
-2. I can recommend hardware, you buy.
-3. Ship them to me. (SD card at minimum, recommend sending all hardware.)
-4. I configure, test, and send back.
-5. You pay return shipping and send me labels.
+2. I answer questions.
+3. You buy hardware and ship to me.
+   * (SD card at minimum, recommend sending all hardware for full testing/troubleshooting.)
+   * You pay return shipping and send me the info/label.
+4. I configure, test, and send wherever you want.
+5. (optional) [send sats](#donations) for thanks!
 
-I cannot guarantee hardware, software, or support. But I try to help whenever I can.
+I cannot guarantee service, hardware, software, or support. But I help whenever I can.
 
 Pre-built benefits:
-* With just a usb keyboard, you can easily put it on your wifi (and setup SSH). This makes it giftable.
-* Just works.
+* Setup with just a usb keyboard and the LCD! (This makes it giftable too...)
+* Just works:
   * Avoid installation, os and hardware config headaches.
   * Official and verified raspberry pi OS
   * Runs on boot, retries on error
   * OS optimized to minimize SD card writes (extends SD life)
   * Firewall configured
-  * Removed unnecessary services
+  * Unnecessary services removed
   * Telemetry disabled
-  * I configure for dedicated use, but you can overlay other stuff later.
 
 
 # Minimum Parts
@@ -54,6 +73,18 @@ At a minimum you need:
 * Quality SD card (5GB or more, _reputable brands only_)
 * _Stable_ 5V 3A power supply
 * Micro USB cable
+
+
+# Troubleshooting tips
+* _Ansible ran without errors but btc-mon isn't running on the screen_ - Likely some issue with the unit file or systemctl. Did you use the suggested user (btcmon)? Did you change/modify the symlink to the current version?
+* _Clean image buggered after 1-3 boots_
+  * It's likely you have a cheap/bad card. Some cards pass checks but still fail. Try again useing a known good card. Never had a problem with [these SD cards](https://www.amazon.com/dp/B073K14CVB).
+  * Try without updating eprom...
+  * Try on a different version of pi os.
+* _Can't enter interactive mode to setup_
+  * You can't enter interactive mode via SSH. Why? Headless alwayss has tty1 recieving input from keyboard. This means configuring keystrokes from hitting tty1 (and possibly running commands without knowing). To sheild tty1 from keyboard input the script switches to non-interactive tty when expecting any key for setup. This was a design trade-off, optimizing for the ability to configure with just usb keyboard and LCD, rather than ssh.
+* AI is your friend.
+* Need more support? Send it to me for _pre-built setup_.
 
 
 # Donations
