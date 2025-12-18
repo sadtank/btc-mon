@@ -26,7 +26,7 @@ Single-use raspi:
 3. Use `sudo raspi-config` to set wifi country code, keyboard layout, and wifi.
 4. Install git with `sudo apt-get update && sudo apt-get install git -y`
 5. Use `git clone --depth 1 https://github.com/sadtank/btc-mon.git`
-6. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.0.7/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
+6. Run setup from highest version folder, e.g., `sudo ./btc-mon/0.1.0/setup/bootstrap-ansible.sh`. Allow the playbook to finish completely.
    * _You are responsible for knowing what these scripts will do on your system._
 7. Whenever the raspi boots, or when the btcmon.service starts, you can enter setup using just a usb keyboard and the LCD display.
 8. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply power on with a keyboard plugged in, and perform all necessary configuration using only the LCD display!
