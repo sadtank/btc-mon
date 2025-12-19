@@ -44,7 +44,7 @@ Pre-built benefits:
 ## Self install
 **You got this.**
 
-### Single-use raspi:
+### Single-use raspi*:
 1. Image using official raspberry [pi imager](https://www.raspberrypi.com/software/).
    * Recommend setting wifi and user `btcmon`.
    * Use the raspberry pi imager! Many imaging utilities do not explicitly write buffer to SD cards before ejecting media. Some versions of pi imager introduce bugs, so consider downgrading imager versions if you run into issues.
@@ -58,13 +58,13 @@ Pre-built benefits:
 9. (optional) If gifting the system, you can now remove the cached wifi creds and shutdown. Your recipient can simply connect a keyboard, boot, and configure using only the LCD display!
 10. (optional) [send sats](#donations) for thanks!
 
-### Multi-use raspi:
+### Multi-use raspi*:
 If you're running other stuff on the pi already, the ansible bootstrap script may bork your existing install.
 1. Eyeball the ansible playbook for dependencies and necessary config (e.g., I2C... AI is good at this.).
 2. Modify and enable the unif file from the ansible playbook. Unit file executes the location of the `current` version symlink.
 3. (optional) [send sats](#donations) for thanks!
 
-While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. If all Waveshare scripts expose the same calls simply swap `LCD1602.py`. This _should_ work, if the device is configured properly. Your mileage may vary.
+*While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. If all Waveshare scripts expose the same calls simply swap `LCD1602.py`. This _should_ work, if the device is configured properly. Your mileage may vary.
 
 
 ## Parts list
@@ -101,6 +101,8 @@ At a minimum you need:
 ## Troubleshooting tips
 * AI is your friend.
 * Need more support? Send it to me for _pre-built setup_.
+* _My desktop switched to a terminal...?_
+  * The script was designed for headless, and it explicitly returns to tty1. This may interfere with desktop workflow. This will be fixed in a future version with environment detection. In the meantime, simply use alt+F7 to return to desktop. If you're feeling crafty, find the "interactive" logic in the script and don't let it switch ttys.
 * _Should I update btc-mon from the interactive LCD menu?_ - Update will clobber everything in the folder with the current repo. You can rollback by pointing the symlink (`current`) at whichever version of main.py you want to run.
 * _Ansible ran without errors but btc-mon isn't running on the screen_
   * Likely some issue with the unit file or systemctl... Did you use the suggested user (`btcmon`)? Did you change/modify the symlink to the current version? You'll need to dig through the logs to figure it out. Check the btcmon.service status and journalctl. 
