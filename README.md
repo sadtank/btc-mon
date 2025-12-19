@@ -64,7 +64,7 @@ If you're running other stuff on the pi already, the ansible bootstrap script ma
 2. Modify and enable the unif file from the ansible playbook. Unit file executes the location of the `current` version symlink.
 3. (optional) [send sats](#donations) for thanks!
 
-*While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. If all Waveshare scripts expose the same calls simply swap `LCD1602.py`. This _should_ work, if the device is configured properly. Your mileage may vary.
+*While this setup is for raspi, the display manufacturer ([Waveshare](https://www.waveshare.com/wiki/LCD1602_I2C_Module)) does support Arduino and Jetson Nano. If all Waveshare scripts expose the same calls simply swap `LCD1602.py`. This _should_ work, if the device is configured properly, and the ansible playbook will likely need tweaking for these SBCs. Your mileage may vary.
 
 
 ## Parts list
