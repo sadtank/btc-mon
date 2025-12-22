@@ -219,6 +219,8 @@
           Type=simple
           User={{ btcmon_user }}
           WorkingDirectory={{ btcmon_service_workdir }}
+          RuntimeDirectory=btcmon
+          RuntimeDirectoryMode=0755
           ExecStartPre=/bin/chvt 8
           ExecStart=/usr/bin/python3 {{ btcmon_service_exec }}
 

@@ -3,9 +3,11 @@
 import requests
 import json
 import os
+from pathlib import Path
 
-CACHE_FILE = Path("/run/kraken_price_cache.json")
-run_dir.mkdir(parents=True, exist_ok=True)
+CACHE_FILE = Path("/run/btcmon/kraken_price_cache.json")
+CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+CACHE_FILE.touch(exist_ok=True)
 
 class PriceFetcher:
     def __init__(self):
