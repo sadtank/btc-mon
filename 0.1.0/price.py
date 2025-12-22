@@ -4,7 +4,8 @@ import requests
 import json
 import os
 
-CACHE_FILE = "/tmp/kraken_price_cache.json"
+CACHE_FILE = Path("/run/kraken_price_cache.json")
+run_dir.mkdir(parents=True, exist_ok=True)
 
 class PriceFetcher:
     def __init__(self):
