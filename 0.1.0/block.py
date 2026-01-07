@@ -18,15 +18,16 @@ class BlockMetadata:
         try:
             new_hash = requests.get("https://mempool.space/api/blocks/tip/hash", timeout=5).text.strip()
             if new_hash != self.hash:
-                self.new_block = True
-
-                metadata = requests.get(f"https://mempool.space/api/block/{new_hash}", timeout=5).json()
+                r = requests.get(f"https://mempool.space/api/block/{new_hash}", timeout=5)
+                r.raise_for_status()  # ensures HTTP success
+                metadata = r.json()
                 self.hash = metadata.get("id", self.hash)
                 self.timestamp = metadata.get("timestamp", 0)
                 self.height = metadata.get("height", 0)
                 self.epoch_now = int(time.time())
                 self.min_ago = max(0, round((time.time() - self.timestamp) / 60))
                 self.success = True
+                self.new_block = True
             else:
                 self.epoch_now = int(time.time())
                 self.min_ago = max(0, round((time.time() - self.timestamp) / 60))
