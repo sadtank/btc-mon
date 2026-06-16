@@ -4,7 +4,7 @@ A Bitcoin clock and price monitor script.
 Sure, the [Blockclock](https://store.coinkite.com/store/blockclock) is sleek... But if you want FOSS you can afford... Something customizable and a bit cyberpunk... then btc-mon is for you.
 
 <img width="345" alt="btcmon1" src="https://github.com/user-attachments/assets/4121025c-9da5-4195-bef0-c20a9c783d44" />
-<img width="345" height="380" alt="btcmon2" src="https://github.com/user-attachments/assets/5c666da6-5f46-44c3-8bc1-b8df9b6145f2" />
+<img width="345" alt="btcmon2" src="https://github.com/user-attachments/assets/5c666da6-5f46-44c3-8bc1-b8df9b6145f2" />
 
 ## Features:
 * Works with all raspberry pi SBCs with built-in wifi
