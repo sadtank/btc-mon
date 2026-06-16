@@ -16,33 +16,8 @@ Sure, the [Blockclock](https://store.coinkite.com/store/blockclock) is sleek... 
 
 DIY or pre-built options below.
 
-## Pre-built setup
-**I got this.**
 
-1. Happy to help. contact me @sadtank:matrix.org. (Allow a few days for my initial response).
-2. I answer questions.
-3. You buy hardware and ship SD card to me. (recommend sending all hardware for full testing/troubleshooting.)
-4. You pay return shipping and send me the info/label.
-5. I configure, test, and ship per the return label.
-6. (optional) [send sats](#donations) for thanks!
-
-I cannot guarantee service, hardware, software, or support. But I help whenever I can.
-
-Pre-built benefits:
-* Setup with just a usb keyboard and the LCD! (This makes it giftable too...)
-* Just works:
-  * Btc-mon runs on boot
-  * Avoid installation, os, and hardware headaches.
-  * Official and verified raspberry pi os distro
-  * OS optimized to minimize SD card writes (extends SD life)
-  * Firewall configured
-  * Unnecessary services removed
-  * Telemetry disabled
-  * Updates disabled (prioritizes stability)
-
-
-## Self install
-**You got this.**
+## Install
 
 ### Single-use raspi*:
 1. Image using official raspberry [pi imager](https://www.raspberrypi.com/software/).
